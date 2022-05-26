@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black"
+        android:id="@+id/root_dialog"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:id="@+id/lin1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/firstOperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="STO QUA"
+                android:textColor="#ffffff"/>
+
+            <ProgressBar
+                android:id="@+id/firstOperationBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:progress="100"/>
+
+            <TextView
+                android:id="@+id/firstIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="0%"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin1"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/secondOperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="STO QUA"
+                android:textColor="#ffffff"/>
+
+            <ProgressBar
+                android:id="@+id/secondOperationBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:progress="100"/>
+
+            <TextView
+                android:id="@+id/secondIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="0%"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin2"
+            android:layout_alignRight="@id/lin2">
+
+            <Button
+                android:id="@+id/okButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="OK"
+                android:textColor="#B3B0AB"
+                android:enabled="false"
+                android:onClick="dismiss"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
