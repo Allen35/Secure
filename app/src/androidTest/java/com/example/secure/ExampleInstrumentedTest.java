@@ -23,6 +23,11 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         assertEquals("com.example.secure", appContext.getPackageName());
+    }
+
+    @Test
+    public void testCheck1()
+    {
         PasswordCheck pswCheck = new PasswordCheck();
 
         /***
@@ -32,44 +37,60 @@ public class ExampleInstrumentedTest {
         int result = pswCheck.check(psw1, psw2);
 
         assertEquals(1, result);
+    }
+
+    @Test
+    public void testCheck2()
+    {
+        PasswordCheck pswCheck = new PasswordCheck();
 
         /***
          * case password with letters and numbers but insufficient length
          */
-        psw1 = "pass123"; psw2 = "pass123";
-        result = pswCheck.check(psw1, psw2);
+        String psw1 = "pass123", psw2 = "pass123";
+        int result = pswCheck.check(psw1, psw2);
 
         assertEquals(2, result);
+    }
 
-        /***
-         * case password with letters and numbers but insufficient length
-         */
-        psw1 = "pass123"; psw2 = "pass123";
-        result = pswCheck.check(psw1, psw2);
-
-        assertEquals(2, result);
+    @Test
+    public void testCheck3()
+    {
+        PasswordCheck pswCheck = new PasswordCheck();
 
         /***
          * case password without letters
          */
-        psw1 = "01234567"; psw2 = "01234567";
-        result = pswCheck.check(psw1, psw2);
+        String psw1 = "01234567", psw2 = "01234567";
+        int result = pswCheck.check(psw1, psw2);
 
         assertEquals(3, result);
+    }
+
+    @Test
+    public void testCheck4()
+    {
+        PasswordCheck pswCheck = new PasswordCheck();
 
         /***
          * case password without numbers
          */
-        psw1 = "password"; psw2 = "password";
-        result = pswCheck.check(psw1, psw2);
+        String psw1 = "password", psw2 = "password";
+        int result = pswCheck.check(psw1, psw2);
 
         assertEquals(4, result);
+    }
+
+    @Test
+    public void testCheck5()
+    {
+        PasswordCheck pswCheck = new PasswordCheck();
 
         /***
          * case correct password
          */
-        psw1 = "password123"; psw2 = "password123";
-        result = pswCheck.check(psw1, psw2);
+        String psw1 = "password123", psw2 = "password123";
+        int result = pswCheck.check(psw1, psw2);
 
         assertEquals(0, result);
     }
