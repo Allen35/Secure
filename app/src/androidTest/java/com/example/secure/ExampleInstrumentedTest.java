@@ -23,5 +23,54 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         assertEquals("com.example.secure", appContext.getPackageName());
+        PasswordCheck pswCheck = new PasswordCheck();
+
+        /***
+         * case different password
+         */
+        String psw1 = "password91", psw2 = "password9";
+        int result = pswCheck.check(psw1, psw2);
+
+        assertEquals(1, result);
+
+        /***
+         * case password with letters and numbers but insufficient length
+         */
+        psw1 = "pass123"; psw2 = "pass123";
+        result = pswCheck.check(psw1, psw2);
+
+        assertEquals(2, result);
+
+        /***
+         * case password with letters and numbers but insufficient length
+         */
+        psw1 = "pass123"; psw2 = "pass123";
+        result = pswCheck.check(psw1, psw2);
+
+        assertEquals(2, result);
+
+        /***
+         * case password without letters
+         */
+        psw1 = "01234567"; psw2 = "01234567";
+        result = pswCheck.check(psw1, psw2);
+
+        assertEquals(3, result);
+
+        /***
+         * case password without numbers
+         */
+        psw1 = "password"; psw2 = "password";
+        result = pswCheck.check(psw1, psw2);
+
+        assertEquals(4, result);
+
+        /***
+         * case correct password
+         */
+        psw1 = "password123"; psw2 = "password123";
+        result = pswCheck.check(psw1, psw2);
+
+        assertEquals(0, result);
     }
 }

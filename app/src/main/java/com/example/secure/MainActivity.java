@@ -172,10 +172,11 @@ public class MainActivity extends AppCompatActivity {
         EditText edtText2 = findViewById(R.id.setPass2);
 
         String txt1 = edtText1.getText().toString(), txt2 = edtText2.getText().toString();
-        String numbers = ".*[0-9].*";
-        String letters = ".*[A-Za-z].*";
 
-        if(txt1.equals(txt2) && txt1.length() >= 8 && txt1.matches(numbers) && txt1.matches(letters))
+        PasswordCheck pswCheck = new PasswordCheck();
+        int result = pswCheck.check(txt1, txt2);
+
+        if(result == 0)
         {
             //call cryptoengine main and start execution
             Intent i = new Intent();
@@ -187,16 +188,16 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(i, 99);
             Toast.makeText(getApplicationContext(), "LA PASSWORD RISPETTA LE SPECIFICHE", Toast.LENGTH_SHORT).show();
         }
-        else if(!txt1.equals(txt2))
+        else if(result == 1)
             Toast.makeText(getApplicationContext(), "LE PASSWORD INSERITE NON CORRISPONDONO", Toast.LENGTH_SHORT).show();
 
-        else if(txt1.length() < 8)
+        else if(result == 2)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 8 CARATTERI", Toast.LENGTH_SHORT).show();
 
-        else if(!txt1.matches(letters))
+        else if(result == 3)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE ALFABETICO", Toast.LENGTH_SHORT).show();
 
-        else if(!txt1.matches(numbers))
+        else if(result == 4)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE NUMERICO", Toast.LENGTH_SHORT).show();
     }
 
