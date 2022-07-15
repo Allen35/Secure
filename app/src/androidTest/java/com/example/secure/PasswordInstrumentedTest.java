@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class PasswordInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -54,21 +54,21 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void testCheck3()
+    void testCheck3()
     {
         PasswordCheck pswCheck = new PasswordCheck();
 
         /***
-         * case password without letters
+         * case password excessive length
          */
-        String psw1 = "01234567", psw2 = "01234567";
+        String psw1 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword", psw2 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword";
         int result = pswCheck.check(psw1, psw2);
 
         assertEquals(3, result);
     }
 
     @Test
-    public void testCheck4()
+    void testCheck4()
     {
         PasswordCheck pswCheck = new PasswordCheck();
 
@@ -82,7 +82,21 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void testCheck5()
+    void testCheck5()
+    {
+        PasswordCheck pswCheck = new PasswordCheck();
+
+        /***
+         * case password without letters
+         */
+        String psw1 = "01234567", psw2 = "01234567";
+        int result = pswCheck.check(psw1, psw2);
+
+        assertEquals(5, result);
+    }
+
+    @Test
+    void testCheck6()
     {
         PasswordCheck pswCheck = new PasswordCheck();
 

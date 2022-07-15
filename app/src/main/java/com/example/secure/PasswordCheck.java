@@ -11,11 +11,15 @@ public class PasswordCheck {
         {
             if(psw1.length() >= 8)
             {
-                if(psw1.matches(letters))
+                if(psw1.length() < 65)
                 {
-                    if(psw1.matches(numbers))
+                    if(psw1.matches(letters))
                     {
-                        return 0;
+                        if(psw1.matches(numbers))
+                        {
+                            return 0;
+                        }
+                        return 5;
                     }
                     return 4;
                 }
