@@ -27,8 +27,12 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
 
     private boolean toEncrypt;
+    public boolean operationConcluded = false;
+
     private String pathName;
     public final int EXTERNAL_REQUEST = 138;
+
+    final public MainActivity context = this;
 
     private TextView textOperation,textFileName;
 
@@ -74,20 +78,25 @@ public class MainActivity extends AppCompatActivity {
         textFileName = findViewById(R.id.fileName);
     }
 
-    public void FileEncrypt(View v)
+    public void FileManager(View v)
     {
-        Intent i = new Intent();
-        i.setClass(MainActivity.this, com.example.secure.FileExplorer.MainActivity.class);
-        i.putExtra("toEncrypt", true);
-        startActivityForResult(i, 0);
-    }
+        String fullName = v.getResources().getResourceName(v.getId());
+        String name = fullName.substring(fullName.lastIndexOf("/") + 1);
 
-    public void FileDecrypt(View v)
-    {
-        Intent i = new Intent();
-        i.setClass(MainActivity.this, com.example.secure.FileExplorer.MainActivity.class);
-        i.putExtra("toEncrypt", false);
-        startActivityForResult(i, 1);
+        if(name.equals(("FileEncrypt")))
+        {
+            Intent i = new Intent();
+            i.setClass(MainActivity.this, com.example.secure.FileExplorer.MainActivity.class);
+            i.putExtra("toEncrypt", true);
+            startActivityForResult(i, 0);
+        }
+        else
+        {
+            Intent i = new Intent();
+            i.setClass(MainActivity.this, com.example.secure.FileExplorer.MainActivity.class);
+            i.putExtra("toEncrypt", false);
+            startActivityForResult(i, 1);
+        }
     }
 
     @Override
@@ -112,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
             pathName = path;
             textOperation.setText("Cifratura");
             textFileName.setText(new File(path).getName());
-            //CallEnrypt(path, false);
         }
         else if (resultCode == 1)//DECIFRA UN FILE
         {
@@ -121,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
             pathName = path;
             textOperation.setText("Decifratura");
             textFileName.setText(new File(path).getName());
-            //CallDecrypt(path, false);
         }
         else if (resultCode == 2)//CIFRA UNA CARTELLA
         {
@@ -130,40 +137,19 @@ public class MainActivity extends AppCompatActivity {
             pathName = path;
             textOperation.setText("Cifratura");
             textFileName.setText(new File(path).getName());
-            //CallEnrypt(path, true);
         }
-        else if (resultCode == 100)//PASSWORD ERRATA
+        else if (resultCode == 100)//PASSWORD ERRATA DECIFRATURA
         {
             System.out.println("Resultcode: "+resultCode);
             String message = b.getString("ERROR");
             showPopUp(message);
         }
-    }
-
-    public void CallEnrypt(String filepath, boolean isFolder)
-    {
-        /*FragmentManager fm = getSupportFragmentManager();
-        CryptoMain editNameDialogFragment = CryptoMain.newInstance(filepath, true, isFolder);
-        editNameDialogFragment.show(fm, "fragment_edit_name");*/
-        Intent i = new Intent();
-        i.setClass(this, com.example.secure.CryptoEngine.CryptoMain.class);
-        i.putExtra("toEncrypt", true);
-        i.putExtra("isFolder", isFolder);
-        i.putExtra("filePath", filepath);
-        startActivity(i);
-    }
-
-    public void CallDecrypt(String filepath, boolean isFolder)
-    {
-        /*FragmentManager fm = getSupportFragmentManager();
-        CryptoMain editNameDialogFragment = CryptoMain.newInstance(filepath, false, isFolder);
-        editNameDialogFragment.show(fm, "fragment_edit_name");*/
-        Intent i = new Intent();
-        i.setClass(this, com.example.secure.CryptoEngine.CryptoMain.class);
-        i.putExtra("toEncrypt", false);
-        i.putExtra("isFolder", isFolder);
-        i.putExtra("filePath", filepath);
-        startActivityForResult(i, 99);
+        else if (resultCode == 101)//TUTTO OK
+        {
+            System.out.println("Resultcode: "+resultCode);
+            String message = b.getString("SUCCESS");
+            operationConcluded = true;
+        }
     }
 
     public void process(View v)
@@ -173,30 +159,19 @@ public class MainActivity extends AppCompatActivity {
 
         String txt1 = edtText1.getText().toString(), txt2 = edtText2.getText().toString();
 
-        PasswordCheck pswCheck = new PasswordCheck();
-        int result = pswCheck.check(txt1, txt2);
+        operationConcluded = false;
+
+        EventDriver eventDriver = EventDriver.newInstance();
+        int result = eventDriver.starter(this, txt1, txt2, pathName, toEncrypt);
 
         if(result == 0)
-        {
-            //call cryptoengine main and start execution
-            Intent i = new Intent();
-            i.setClass(this, com.example.secure.CryptoEngine.CryptoMain.class);
-            i.putExtra("toEncrypt", toEncrypt);
-            i.putExtra("isFolder", new File(pathName).isDirectory());
-            i.putExtra("filePath", pathName);
-            i.putExtra("key", txt1);
-            startActivityForResult(i, 99);
             Toast.makeText(getApplicationContext(), "LA PASSWORD RISPETTA LE SPECIFICHE", Toast.LENGTH_SHORT).show();
-        }
         else if(result == 1)
             Toast.makeText(getApplicationContext(), "LE PASSWORD INSERITE NON CORRISPONDONO", Toast.LENGTH_SHORT).show();
-
         else if(result == 2)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 8 CARATTERI", Toast.LENGTH_SHORT).show();
-
         else if(result == 3)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE ALFABETICO", Toast.LENGTH_SHORT).show();
-
         else if(result == 4)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE NUMERICO", Toast.LENGTH_SHORT).show();
     }

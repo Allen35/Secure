@@ -118,7 +118,7 @@ public class AsyncLoad extends AsyncTask<Void, Void, Void> {
     }
 
     private long size = 0;
-    public long folderSizeMTTreeMap(File directory) {
+    /*public long folderSizeMTTreeMap(File directory) {
         if (directory.isFile())
             return directory.length();
 
@@ -175,5 +175,5 @@ public class AsyncLoad extends AsyncTask<Void, Void, Void> {
         }
         //System.out.println("Folders: "+folders);
         return folders;
-    }
+    }*/
 }

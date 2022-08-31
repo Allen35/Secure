@@ -81,6 +81,7 @@
         android:weightSum="2" >
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/FileEncrypt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -88,7 +89,7 @@
             app:cardBackgroundColor="#000000"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
-            android:onClick="FileEncrypt">
+            android:onClick="FileManager">
 
             <LinearLayout
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -120,6 +121,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/FileDecrypt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -128,7 +130,7 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
             app:cardBackgroundColor="#000000"
-            android:onClick="FileDecrypt">
+            android:onClick="FileManager">
 
             <LinearLayout
                 android:layout_gravity="center_horizontal|center_vertical"

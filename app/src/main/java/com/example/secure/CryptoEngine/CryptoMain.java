@@ -113,11 +113,19 @@ public class CryptoMain extends Activity implements EncryptMain.Enable, DecryptM
         i.putExtra("ERROR", "Password non corretta");
         setResult(code, i);
         System.out.println("Forced Termination code: "+code);
+
         finish();
     }
 
     public void dismiss(View v)
     {
+        int code = 101;
+
+        Intent i = new Intent();
+        i.putExtra("SUCCESS", "Everything ok");
+        setResult(code, i);
+        System.out.println("Forced Termination code: "+code);
+
         finish();
     }
 }
