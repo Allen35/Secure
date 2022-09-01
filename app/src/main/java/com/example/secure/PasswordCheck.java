@@ -4,7 +4,8 @@ public class PasswordCheck {
 
     public int check(String psw1, String psw2)
     {
-        final String letters = ".*[A-Za-z].*";
+        final String letters = ".*[a-z].*";
+        final String LETTERS = ".*[A-Z].*";
         final String numbers = ".*[0-9].*";
 
         if(psw1.equals(psw2))
@@ -15,9 +16,13 @@ public class PasswordCheck {
                 {
                     if(psw1.matches(letters))
                     {
-                        if(psw1.matches(numbers))
+                        if(psw1.matches(LETTERS))
                         {
-                            return 0;
+                            if(psw1.matches(numbers))
+                            {
+                                return 0;
+                            }
+                            return 6;
                         }
                         return 5;
                     }

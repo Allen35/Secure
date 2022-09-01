@@ -171,8 +171,12 @@ public class MainActivity extends AppCompatActivity {
         else if(result == 2)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 8 CARATTERI", Toast.LENGTH_SHORT).show();
         else if(result == 3)
-            Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE ALFABETICO", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "LA PASSWORD NON PUO' CONENERE PIU' DI 64 CARATTERI", Toast.LENGTH_SHORT).show();
         else if(result == 4)
+            Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE ALFABETICO", Toast.LENGTH_SHORT).show();
+        else if(result == 5)
+            Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE ALFABETICO MAIUSCOLO", Toast.LENGTH_SHORT).show();
+        else if(result == 6)
             Toast.makeText(getApplicationContext(), "LA PASSWORD DEVE CONTENERE ALMENO 1 CARATTERE NUMERICO", Toast.LENGTH_SHORT).show();
     }
 

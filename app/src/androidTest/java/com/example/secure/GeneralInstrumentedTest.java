@@ -42,37 +42,29 @@ public class GeneralInstrumentedTest {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
     }
 
-    //@Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-
-        assertEquals("com.example.secure", appContext.getPackageName());
-    }
-
     @Test
     public void testCheck1()
     {
         /***
-         * case different password
-         * file exist
+         * different password
+         * password doesn't respect nor specification or length
+         * file doesn't exist
          */
-        String psw1 = "password91", psw2 = "password9";
+        String psw1 = "passwor", psw2 = "pass123";
 
         Intent intent = new Intent();
         activityRule.launchActivity(intent);
 
         EventDriver eventDriver = EventDriver.newInstance();
-        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/test.png", true);
+        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/NON-EXISTENT.png", true);
 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*while(activityRule.getActivity().operationConcluded == false) {}*/
 
-        File file = new File(dirPath + "/Secure/Encrypted/" + "test.png.aes");
+        File file = new File(dirPath + "/Secure/Encrypted/" + "/NON-EXISTENT.png.aes");
 
         System.out.println("Esiste: " + file.exists());
         System.out.println("Encr path: " + file.toString());
@@ -84,25 +76,25 @@ public class GeneralInstrumentedTest {
     public void testCheck2()
     {
         /***
-         * case password with letters and numbers but insufficient length
-         * file exist
+         * different password
+         * password doesn't respect nor format or length
+         * file doesn't exist
          */
-        String psw1 = "pass123", psw2 = "pass123";
+        String psw1 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword", psw2 = "pass123";
 
         Intent intent = new Intent();
         activityRule.launchActivity(intent);
 
         EventDriver eventDriver = EventDriver.newInstance();
-        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/test.png", true);
+        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/NON-EXISTANT.png", true);
 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*while(activityRule.getActivity().operationConcluded == false) {}*/
 
-        File file = new File(dirPath + "/Secure/Encrypted/" + "test.png.aes");
+        File file = new File(dirPath + "/Secure/Encrypted/" + "/NON-EXISTENT.png.aes");
 
         System.out.println("Esiste: " + file.exists());
         System.out.println("Encr path: " + file.toString());
@@ -114,25 +106,25 @@ public class GeneralInstrumentedTest {
     public void testCheck3()
     {
         /***
-         * case password excessive length
-         * file exist
+         * different password
+         * password doesn't respect format
+         * file doesn't exist
          */
-        String psw1 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword", psw2 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword";
+        String psw1 = "password", psw2 = "pass123";
 
         Intent intent = new Intent();
         activityRule.launchActivity(intent);
 
         EventDriver eventDriver = EventDriver.newInstance();
-        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/test.png", true);
+        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/NON-EXISTENT.png", true);
 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*while(activityRule.getActivity().operationConcluded == false) {}*/
 
-        File file = new File(dirPath + "/Secure/Encrypted/" + "test.png.aes");
+        File file = new File(dirPath + "/Secure/Encrypted/" + "/NON-EXISTENT.png.aes");
 
         System.out.println("Esiste: " + file.exists());
         System.out.println("Encr path: " + file.toString());
@@ -144,25 +136,25 @@ public class GeneralInstrumentedTest {
     public void testCheck4()
     {
         /***
-         * case password without numbers
-         * file exist
+         * different password
+         * password respect format and length
+         * file doesn't exist
          */
-        String psw1 = "password", psw2 = "password";
+        String psw1 = "password123", psw2 = "password";
 
         Intent intent = new Intent();
         activityRule.launchActivity(intent);
 
         EventDriver eventDriver = EventDriver.newInstance();
-        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/test.png", true);
+        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/NON-EXISTENT.png", true);
 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*while(activityRule.getActivity().operationConcluded == false) {}*/
 
-        File file = new File(dirPath + "/Secure/Encrypted/" + "test.png.aes");
+        File file = new File(dirPath + "/Secure/Encrypted/" + "/NON-EXISTENT.png.aes");
 
         System.out.println("Esiste: " + file.exists());
         System.out.println("Encr path: " + file.toString());
@@ -174,25 +166,25 @@ public class GeneralInstrumentedTest {
     public void testCheck5()
     {
         /***
-         * case password without letters
-         * file exist
+         * equal password
+         * password respect format and length
+         * file doesn't exist
          */
-        String psw1 = "01234567", psw2 = "01234567";
+        String psw1 = "password123", psw2 = "password123";
 
         Intent intent = new Intent();
         activityRule.launchActivity(intent);
 
         EventDriver eventDriver = EventDriver.newInstance();
-        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/test.png", true);
+        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/NON-EXISTENT.png", true);
 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*while(activityRule.getActivity().operationConcluded == false) {}*/
 
-        File file = new File(dirPath + "/Secure/Encrypted/" + "test.png.aes");
+        File file = new File(dirPath + "/Secure/Encrypted/" + "/NON-EXISTENT.png.aes");
 
         System.out.println("Esiste: " + file.exists());
         System.out.println("Encr path: " + file.toString());
@@ -204,35 +196,10 @@ public class GeneralInstrumentedTest {
     public void testCheck6()
     {
         /***
-         * case correct password
-         * file doesn't exist
+         * equal password
+         * password respect format and length
+         * file exist
          */
-        String psw1 = "password123", psw2 = "password123";
-
-        Intent intent = new Intent();
-        activityRule.launchActivity(intent);
-
-        EventDriver eventDriver = EventDriver.newInstance();
-        eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/tes.png", true);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        /*while(activityRule.getActivity().operationConcluded == false) {}*/
-
-        File file = new File(dirPath + "/Secure/Encrypted/" + "test.png.aes");
-
-        System.out.println("Esiste: " + file.exists());
-        System.out.println("Encr path: " + file.toString());
-        System.out.println("Path: " + dirPath + "/test.png");
-        assertEquals(false, file.exists());// check if the encrypted file exist
-    }
-
-    @Test
-    public void testCheck7()
-    {
         String psw1 = "password123", psw2 = "password123";
 
         Intent intent = new Intent();
@@ -242,7 +209,7 @@ public class GeneralInstrumentedTest {
         eventDriver.starter(activityRule.getActivity().context, psw1, psw2, dirPath + "/test.png", true);
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

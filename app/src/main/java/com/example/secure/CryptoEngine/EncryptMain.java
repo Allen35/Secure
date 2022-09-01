@@ -33,7 +33,7 @@ public class EncryptMain implements MultiThreadAES.EncryptCallBack, AsyncZip.Cal
     private CryptoMain cryptoMain;
 
     private int buffer_size = 2048*2;
-    private int thread_num = 8;
+    private int thread_num = 4;
 
     public interface Enable
     {
@@ -71,7 +71,7 @@ public class EncryptMain implements MultiThreadAES.EncryptCallBack, AsyncZip.Cal
             public void run()
             {
                 //new MultiThreadAESMemoryMappedFile().doMultiThreadAES(cryptoMain, encryptMain, progressbarCrypto, 4, 512, new File(filePath), StoragePath + "/Secure/Encrypted/" + fileWithoutExtension + ".aes", secretKey);
-                new MultiThreadAES().doMultiThreadAES(thread_num, buffer_size, new File(filePath), StoragePath + "/Secure/Encrypted/" + fileName + ".aes", secretKey, cryptoMain, encryptMain, progressbar2, textIndicator2, true);
+                new MultiThreadAES().AesEncryption(thread_num, buffer_size, new File(filePath), StoragePath + "/Secure/Encrypted/" + fileName + ".aes", secretKey, cryptoMain, encryptMain, progressbar2, textIndicator2, true);
             }
         }.start();
     }
@@ -82,7 +82,7 @@ public class EncryptMain implements MultiThreadAES.EncryptCallBack, AsyncZip.Cal
         new Thread(){
             public void run()
             {
-                new MultiThreadAES().doMultiThreadAES(thread_num, buffer_size, new File(StoragePath + "/Secure/Encrypted/Temp/" + fileName), StoragePath + "/Secure/Encrypted/" + fileName + ".aes", secretKey, cryptoMain, encryptMain, progressbar2, textIndicator2, false);
+                new MultiThreadAES().AesEncryption(thread_num, buffer_size, new File(StoragePath + "/Secure/Encrypted/Temp/" + fileName), StoragePath + "/Secure/Encrypted/" + fileName + ".aes", secretKey, cryptoMain, encryptMain, progressbar2, textIndicator2, false);
             }
         }.start();
     }
