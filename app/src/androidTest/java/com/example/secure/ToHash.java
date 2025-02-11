@@ -38,7 +38,6 @@ public class ToHash {
 	
 	public String hash(String fileName)
 	{
-		//Use MD5 algorithm
 		MessageDigest SHADigest;
 		try {
 			SHADigest = MessageDigest.getInstance("SHA-512");

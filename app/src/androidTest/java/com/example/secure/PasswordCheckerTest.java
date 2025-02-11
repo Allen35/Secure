@@ -13,29 +13,29 @@ public class PasswordCheckerTest {
 	public void testCheck1()
 	{
 		PasswordCheck pswCheck = new PasswordCheck();
-		
+
 		/***
-		 * case different password
+		 * case insufficient lengthd
 		 */
-		String psw1 = "password91", psw2 = "password9";
+		String psw1 = "passw91", psw2 = "passw91";
 		int result = pswCheck.check(psw1, psw2);
-		 
-		assertEquals(1, result);
-		
+
+		assertEquals(2, result);
+
 	}
-	
+
 	@Test
 	public void testCheck2()
 	{
 		PasswordCheck pswCheck = new PasswordCheck();
 
 		/***
-		 * case password with letters and numbers but insufficient length
+		 * case excessive length
 		 */
-		String psw1 = "pass123", psw2 = "pass123";
+		String psw1 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword", psw2 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword";
 		int result = pswCheck.check(psw1, psw2);
-		
-		assertEquals(2, result);
+
+		assertEquals(3, result);
 	}
 
 	@Test
@@ -44,67 +44,67 @@ public class PasswordCheckerTest {
 		PasswordCheck pswCheck = new PasswordCheck();
 
 		/***
-		 * case password excessive length
+		 * case no lowercase letters
 		 */
-		String psw1 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword", psw2 = "passwordpasswordpasswordpasswordpasswordpasswordpasswordpasswordpassword";
+		String psw1 = "PASSWORD9", psw2 = "PASSWORD9";
 		int result = pswCheck.check(psw1, psw2);
-		
-		assertEquals(3, result);
+
+		assertEquals(4, result);
 	}
-	
+
 	@Test
 	public void testCheck4()
 	{
 		PasswordCheck pswCheck = new PasswordCheck();
 
 		/***
-		 * case password without numbers
+		 * case no uppercase letters
 		 */
 		String psw1 = "password", psw2 = "password";
 		int result = pswCheck.check(psw1, psw2);
-		
+
 		assertEquals(5, result);
 	}
-	
+
 	@Test
 	public void testCheck5()
 	{
 		PasswordCheck pswCheck = new PasswordCheck();
 
 		/***
-		 * case password without letters
+		 * case password without numbers
 		 */
-		String psw1 = "01234567", psw2 = "01234567";
+		String psw1 = "Password", psw2 = "Password";
 		int result = pswCheck.check(psw1, psw2);
-		
-		assertEquals(4, result);
+
+		assertEquals(6, result);
 	}
-	
+
 	@Test
 	public void testCheck6()
 	{
 		PasswordCheck pswCheck = new PasswordCheck();
 
 		/***
-		 * case password without letters
+		 * case unequal password
 		 */
-		String psw1 = "PASSWORD", psw2 = "PASSWORD";
+		String psw1 = "Password99", psw2 = "Password98";
 		int result = pswCheck.check(psw1, psw2);
-		
-		assertEquals(6, result);
+
+		assertEquals(1, result);
 	}
 
 	@Test
 	public void testCheck7()
 	{
 		PasswordCheck pswCheck = new PasswordCheck();
-		
+
 		/***
 		 * case correct password
 		 */
 		String psw1 = "Password123", psw2 = "Password123";
 		int result = pswCheck.check(psw1, psw2);
-		
+
 		assertEquals(0, result);
 	}
 }

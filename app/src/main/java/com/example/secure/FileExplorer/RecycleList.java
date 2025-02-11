@@ -1,6 +1,5 @@
 package com.example.secure.FileExplorer;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,19 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.secure.R;
 
-import java.io.File;
 import java.text.DecimalFormat;
 import java.util.LinkedList;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class RecycleList extends RecyclerView.Adapter<RecycleList.ViewHolder> {
 
     private LinkedList<Model> data/* = new LinkedList<>()*/;
     private Updater update;
-    private MainActivity mainContext;
+    private FileExplorerMain mainContext;
 
     //ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -37,7 +31,7 @@ public class RecycleList extends RecyclerView.Adapter<RecycleList.ViewHolder> {
         void longClick(String pathName);
     }
 
-    public RecycleList(LinkedList<Model> data, Updater update, MainActivity mainContext) {
+    public RecycleList(LinkedList<Model> data, Updater update, FileExplorerMain mainContext) {
         this.data = data;
         this.update = update;
         this.mainContext = mainContext;

@@ -1,8 +1,6 @@
 package com.example.secure.CryptoEngine;
 
 import android.os.Environment;
-import android.os.Handler;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -30,7 +28,7 @@ public class EncryptMain implements MultiThreadAES.EncryptCallBack, AsyncZip.Cal
 
     private Enable CallBack;
     private EncryptMain encryptMain = this;
-    private CryptoMain cryptoMain;
+    private CryptoEngineMain cryptoMain;
 
     private int buffer_size = 2048*2;
     private int thread_num = 4;
@@ -40,7 +38,7 @@ public class EncryptMain implements MultiThreadAES.EncryptCallBack, AsyncZip.Cal
         void enableButton();
     }
 
-    public EncryptMain(String filePath, String secretKey, CryptoMain activity)
+    public EncryptMain(String filePath, String secretKey, CryptoEngineMain activity)
     {
         this.CallBack = activity;
         this.cryptoMain = activity;

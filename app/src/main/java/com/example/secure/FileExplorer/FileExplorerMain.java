@@ -1,22 +1,12 @@
 package com.example.secure.FileExplorer;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,9 +15,7 @@ import com.example.secure.R;
 import java.io.File;
 import java.util.LinkedList;
 
-import static android.widget.Toast.LENGTH_SHORT;
-
-public class MainActivity extends AppCompatActivity /*implements RecycleList.updateCallBack*/ {
+public class FileExplorerMain extends AppCompatActivity /*implements RecycleList.updateCallBack*/ {
 
     public RecyclerView rList;
     public TextView textPath;
@@ -49,7 +37,7 @@ public class MainActivity extends AppCompatActivity /*implements RecycleList.upd
         Intent i = getIntent();
 
         setDirPath();
-        if(! i.getBooleanExtra("toEncrypt", true))//se viene chiamato per decifrare
+        if(! i.getBooleanExtra("toEncrypt", true))//If called to decrypt
         {
             dirPath = dirPath + "/Secure/Encrypted/";
             decrypt = true;

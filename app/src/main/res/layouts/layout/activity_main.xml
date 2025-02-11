@@ -43,7 +43,7 @@
             android:inputType="textPassword"
             android:background="@drawable/border"
             android:hint=" Inserisci password"
-            android:text="boooooooooom!!!!99"
+            android:text="Boooooooooom!!!!99"
             android:textColor="#ffffff"
             android:textColorHint="#8A8181"
             android:textSize="20sp" />
@@ -65,7 +65,7 @@
             android:inputType="textPassword"
             android:background="@drawable/border"
             android:hint=" Ripeti password"
-            android:text="boooooooooom!!!!99"
+            android:text="Boooooooooom!!!!99"
             android:textColorHint="#8A8181"
             android:textSize="20sp"
             android:textColor="#ffffff" />
@@ -200,6 +200,7 @@
 
         <Button
             style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/executeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

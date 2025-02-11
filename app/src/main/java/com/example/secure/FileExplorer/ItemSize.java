@@ -9,9 +9,9 @@ public class ItemSize extends Thread{
 
     private TextView textView;
     private Model item;
-    private MainActivity mainContext;
+    private FileExplorerMain mainContext;
 
-    public ItemSize(TextView textView, Model item, MainActivity mainContext)
+    public ItemSize(TextView textView, Model item, FileExplorerMain mainContext)
     {
         this.textView = textView;
         this.item = item;

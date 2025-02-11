@@ -1,7 +1,6 @@
 package com.example.secure.CryptoEngine;
 
 import android.os.Environment;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -11,13 +10,11 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 
 public class DecryptMain implements AsyncZip.CallBack2, MultiThreadAES.DecryptCallBack{
 
     private Enable CryptoActivity;
-    private CryptoMain cryptoMain;
+    private CryptoEngineMain cryptoMain;
 
     private FileUtils f = new FileUtils();
     private String StoragePath;
@@ -42,7 +39,7 @@ public class DecryptMain implements AsyncZip.CallBack2, MultiThreadAES.DecryptCa
         void enableButton();
     }
 
-    public DecryptMain(String filePath, String secretKey, CryptoMain activity)
+    public DecryptMain(String filePath, String secretKey, CryptoEngineMain activity)
     {
         this.CryptoActivity = activity;
         this.cryptoMain = activity;

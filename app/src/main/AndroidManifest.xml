@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FileExplorer.MainActivity"
+        <activity android:name=".FileExplorer.FileExplorerMain"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".CryptoEngine.CryptoMain"
+        <activity android:name=".CryptoEngine.CryptoEngineMain"
                   android:theme="@style/Theme.AppCompat.Translucent"
                   android:screenOrientation="portrait"/>
     </application>

@@ -1,27 +1,19 @@
 package com.example.secure.CryptoEngine;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 
 import com.example.secure.R;
 
-public class CryptoMain extends Activity implements EncryptMain.Enable, DecryptMain.Enable {
+public class CryptoEngineMain extends Activity implements EncryptMain.Enable, DecryptMain.Enable {
 
     private String filePath;
 
@@ -31,9 +23,9 @@ public class CryptoMain extends Activity implements EncryptMain.Enable, DecryptM
 
     private String secretKey;
 
-    public static CryptoMain context;
+    public static CryptoEngineMain context;
 
-    public CryptoMain() {}
+    public CryptoEngineMain() {}
 
     /*//https://stackoverflow.com/questions/12478520/how-to-set-dialogfragments-width-and-height
     @Override

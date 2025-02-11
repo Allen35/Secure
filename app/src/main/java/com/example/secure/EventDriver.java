@@ -1,7 +1,7 @@
 package com.example.secure;
 
 import android.content.Intent;
-import android.widget.Toast;
+import com.example.secure.CryptoEngine.CryptoEngineMain;
 
 import java.io.File;
 
@@ -36,7 +36,7 @@ public class EventDriver {
         {
             //call cryptoengine main and start execution
             Intent i = new Intent();
-            i.setClass(context, com.example.secure.CryptoEngine.CryptoMain.class);
+            i.setClass(context, CryptoEngineMain.class);
             i.putExtra("toEncrypt", toEncrypt);
             i.putExtra("isFolder", new File(pathName).isDirectory());
             i.putExtra("filePath", pathName);

@@ -4,10 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -16,10 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.secure.CryptoEngine.CryptoMain;
 import com.example.secure.CustomDialog.CustomDialog;
 
-import org.w3c.dom.Text;
+import com.example.secure.FileExplorer.FileExplorerMain;
 
 import java.io.File;
 
@@ -58,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == EXTERNAL_REQUEST) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 System.out.println("permission accepted");
@@ -86,14 +84,14 @@ public class MainActivity extends AppCompatActivity {
         if(name.equals(("FileEncrypt")))
         {
             Intent i = new Intent();
-            i.setClass(MainActivity.this, com.example.secure.FileExplorer.MainActivity.class);
+            i.setClass(MainActivity.this, FileExplorerMain.class);
             i.putExtra("toEncrypt", true);
             startActivityForResult(i, 0);
         }
         else
         {
             Intent i = new Intent();
-            i.setClass(MainActivity.this, com.example.secure.FileExplorer.MainActivity.class);
+            i.setClass(MainActivity.this, FileExplorerMain.class);
             i.putExtra("toEncrypt", false);
             startActivityForResult(i, 1);
         }
